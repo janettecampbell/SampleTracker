@@ -1,0 +1,77 @@
+<div class="container">
+  <h2 mat-dialog-title>Add Sample</h2>
+  <div class="dialog-content">
+    <form id="addSampleForm" [formGroup]="addSample" (ngSubmit)="onSubmit()">
+      @if(addSample.controls['image'].invalid &&
+      (addSample.controls['image'].touched ||
+      addSample.controls['image'].dirty)){
+      <span class="text-red">Image is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Image</mat-label>
+        <input
+          formControlName="image"
+          matInput
+          placeholder="Image Link..."
+          required
+        />
+      </mat-form-field>
+
+      @if(addSample.controls['styleNumber'].invalid &&
+      (addSample.controls['styleNumber'].touched ||
+      addSample.controls['styleNumber'].dirty)){
+      <span class="text-red">Style Number is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Style Number</mat-label>
+        <input
+          formControlName="styleNumber"
+          matInput
+          placeholder="Style Number..."
+          required
+        />
+      </mat-form-field>
+
+      @if(addSample.controls['description'].invalid &&
+      (addSample.controls['description'].touched ||
+      addSample.controls['description'].dirty)){
+      <span class="text-red">Description is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Description</mat-label>
+        <input
+          formControlName="description"
+          matInput
+          placeholder="Description..."
+          required
+        />
+      </mat-form-field>
+
+      @if(addSample.controls['dateReceived'].invalid &&
+      (addSample.controls['dateReceived'].touched ||
+      addSample.controls['dateReceived'].dirty)){
+      <span class="text-red">Date Received is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Date Received</mat-label>
+        <input
+          formControlName="dateReceived"
+          matInput
+          placeholder="Date Received..."
+          required
+        />
+      </mat-form-field>
+      <mat-checkbox
+        type="checkbox"
+        formControlName="returnToVendor"
+        color="primary"
+        >Return this sample to vendor?</mat-checkbox
+      >
+      <div class="buttons">
+        <button type="submit" mat-flat-button color="primary">Submit</button>
+        <button type="button" mat-flat-button color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+{{ addSample.value | json }}

@@ -1,0 +1,23 @@
+.text-red {
+  color: #f44336;
+}
+
+.mat-mdc-form-field{
+  display: block;
+  padding: 20px;
+}
+
+.mat-mdc-checkbox {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.buttons {
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  margin-right: 10px;
+}
