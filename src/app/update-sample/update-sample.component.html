@@ -1,0 +1,82 @@
+<div class="container">
+  <h2 mat-dialog-title>Update Sample</h2>
+  <div class="dialog-content">
+    <form id="addSampleForm" [formGroup]="updateSample" (ngSubmit)="onSubmit()">
+      @if(updateSample.controls['image'].invalid &&
+      (updateSample.controls['image'].touched ||
+      updateSample.controls['image'].dirty)){
+      <span class="text-red">Image is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Image</mat-label>
+        <input
+          formControlName="image"
+          matInput
+          placeholder="Image Link..."
+          value="sampleData?.image"
+          required
+        />
+      </mat-form-field>
+
+      @if(updateSample.controls['styleNumber'].invalid &&
+      (updateSample.controls['styleNumber'].touched ||
+      updateSample.controls['styleNumber'].dirty)){
+      <span class="text-red">Style Number is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Style Number</mat-label>
+        <input
+          formControlName="styleNumber"
+          matInput
+          placeholder="Style Number..."
+          value="sampleData?.styleNumber"
+          required
+        />
+      </mat-form-field>
+
+      @if(updateSample.controls['description'].invalid &&
+      (updateSample.controls['description'].touched ||
+      updateSample.controls['description'].dirty)){
+      <span class="text-red">Description is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Description</mat-label>
+        <input
+          formControlName="description"
+          matInput
+          placeholder="Description..."
+          value="sampleData?.description"
+          required
+        />
+      </mat-form-field>
+
+      @if(updateSample.controls['dateReceived'].invalid &&
+      (updateSample.controls['dateReceived'].touched ||
+      updateSample.controls['dateReceived'].dirty)){
+      <span class="text-red">Date Received is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Date Received</mat-label>
+        <input
+          formControlName="dateReceived"
+          matInput
+          placeholder="Date Received..."
+          value="sampleData?.dateReceived"
+          required
+        />
+      </mat-form-field>
+      <mat-checkbox
+        type="checkbox"
+        formControlName="returnToVendor"
+        color="primary"
+        value="sampleData?.returnToVendor"
+        >Return this sample to vendor?</mat-checkbox
+      >
+      <div class="buttons">
+        <button type="submit" mat-flat-button color="primary">Submit</button>
+        <button type="button" mat-flat-button color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+

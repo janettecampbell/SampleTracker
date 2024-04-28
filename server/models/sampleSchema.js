@@ -5,11 +5,12 @@ const Schema = mongoose.Schema;
 const sampleSchema = new Schema({
   image: {
     type: String,
-    required: true
+    required: true,
   },
   styleNumber: {
     type: String,
     required: true,
+    unique: true,
   },
   description: {
     type: String,
@@ -25,4 +26,4 @@ const sampleSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Samples", sampleSchema)
+module.exports = mongoose.model("Samples", sampleSchema);

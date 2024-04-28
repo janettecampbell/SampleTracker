@@ -8,7 +8,10 @@ import {
 } from '@angular/forms';
 import { DatabaseService } from '../service/database/database.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatFormFieldModule, FloatLabelType } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  FloatLabelType,
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {
   MatDialogModule,
@@ -17,10 +20,10 @@ import {
   MatDialogActions,
   MatDialog,
 } from '@angular/material/dialog';
-import {MatCheckboxModule} from "@angular/material/checkbox"
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar} from "@angular/material/snack-bar"
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-sample',
@@ -44,10 +47,10 @@ export class AddSampleComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private databaseService: DatabaseService,
-    private dialogRef: MatDialog,
+    private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private _snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar
   ) {}
 
   databaseSamples: any[] = [];
@@ -76,15 +79,22 @@ export class AddSampleComponent implements OnInit {
         .addSample(this.addSample.value)
         .subscribe((res: any) => {
           isAddedToDatabase = true;
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(['./'], {
+            relativeTo: this.route,
+          });
         });
+        
     }
-    if(isFormValid && isAddedToDatabase) {
-      this._snackBar.open("Item Successfully Added", "Close", {
-        duration: 3000
+    console.log(`IsFormValid: ${isFormValid}`);
+    console.log(`IsAddedToDatabase: ${isAddedToDatabase}`);
+    if (isFormValid && isAddedToDatabase) {
+      this._snackBar.open('Item Successfully Added', 'Close', {
+        duration: 3000,
       });
-      this.dialogRef.closeAll();
+      this.dialog.closeAll();
     }
-    
   }
 
   ngOnInit(): void {
