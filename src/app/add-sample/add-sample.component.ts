@@ -69,6 +69,10 @@ export class AddSampleComponent implements OnInit {
     returnToVendor: new FormControl<boolean>(false),
   });
 
+  onCancel() {
+    this.dialog.closeAll()
+  }
+
   onSubmit() {
     this.addSample.markAllAsTouched();
     const isFormValid = this.addSample.valid;
@@ -84,16 +88,16 @@ export class AddSampleComponent implements OnInit {
           this.router.navigate(['./'], {
             relativeTo: this.route,
           });
+
+          console.log(`IsFormValid: ${isFormValid}`);
+          console.log(`IsAddedToDatabase: ${isAddedToDatabase}`);
+          if (isFormValid && isAddedToDatabase) {
+            this._snackBar.open('Item Successfully Added', 'Close', {
+              duration: 3000,
+            });
+            this.dialog.closeAll();
+          }
         });
-        
-    }
-    console.log(`IsFormValid: ${isFormValid}`);
-    console.log(`IsAddedToDatabase: ${isAddedToDatabase}`);
-    if (isFormValid && isAddedToDatabase) {
-      this._snackBar.open('Item Successfully Added', 'Close', {
-        duration: 3000,
-      });
-      this.dialog.closeAll();
     }
   }
 

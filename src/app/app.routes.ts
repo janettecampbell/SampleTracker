@@ -3,6 +3,5 @@ import { SampleHomeComponent } from './sample-home/sample-home.component';
 import { AddSampleComponent } from './add-sample/add-sample.component';
 
 export const routes: Routes = [
-  {path: "", component: SampleHomeComponent},
-  {path:"addSample", component: AddSampleComponent}
+  {path: "", component: SampleHomeComponent}
 ];
